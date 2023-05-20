@@ -1,11 +1,11 @@
 package ch.langenegger;
 
-import java.util.List;
-
-import org.jboss.logging.Logger;
-
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import org.jboss.logging.Logger;
+
+import java.util.List;
 
 @Dependent
 public class BlogService {
@@ -16,13 +16,13 @@ public class BlogService {
     Logger logger;
 
     public List<Blog> getBlogs() {
-        var blogs = blogRepository.getBlogs();
+        var blogs = blogRepository.listAll();
         logger.info("Returning " + blogs.size() + " blogs");
         return blogs;
     }
-
+    @Transactional
     public void addBlog(Blog blog) {
         logger.info("Adding blog " + blog.getTitle());
-        blogRepository.addBlog(blog);
+        blogRepository.persist(blog);
     }
 }

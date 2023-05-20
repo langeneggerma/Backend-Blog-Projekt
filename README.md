@@ -1,11 +1,6 @@
 # backend-blog-projekt
 
 
-# Important Notes
-* Can't use Lombok [here]( https://plugins.jetbrains.com/plugin/6317-lombok/versions#tabs), because Intelij doesn't support it yet.
-
-
-
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .

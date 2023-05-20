@@ -1,13 +1,12 @@
 package ch.langenegger;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import io.quarkus.test.junit.QuarkusTest;
-import jakarta.inject.Inject;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @QuarkusTest
 public class BlogServiceTest {
@@ -18,16 +17,18 @@ public class BlogServiceTest {
     void listingAndAddingBlogs() {
         // Arrange
         Blog blog = new Blog("Testing Blog", "This is my testing blog");
+        Blog blog2 = new Blog("Testing Blog 2", "This is my testing blog");
         int blogsBefore;
         List<Blog> blogs;
 
         // Act
         blogsBefore = blogService.getBlogs().size();
         blogService.addBlog(blog);
+        blogService.addBlog(blog2);
         blogs = blogService.getBlogs();
 
         // Assert
-        assertEquals(blogsBefore + 1, blogs.size());
-        assertEquals(blog, blogs.get(blogs.size() - 1));
+        assertEquals(blogsBefore + 2, blogs.size());
+        assertEquals(blog.getTitle(), blogs.get(blogs.size() - 2).getTitle());
     }
 }

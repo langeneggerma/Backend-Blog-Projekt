@@ -1,28 +1,22 @@
 package ch.langenegger;
 
-public class Blog {
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-    private String title;
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+public class Blog extends PanacheEntity {
+    private Long id;
+    public String title;
     private String content;
 
-    Blog(String title, String content) {
+    public Blog(String title, String content) {
         this.title = title;
-        this.content = content;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
         this.content = content;
     }
 }
