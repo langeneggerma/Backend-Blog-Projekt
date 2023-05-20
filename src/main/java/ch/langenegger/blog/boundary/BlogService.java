@@ -1,5 +1,7 @@
-package ch.langenegger;
+package ch.langenegger.blog.boundary;
 
+import ch.langenegger.blog.entity.Blog;
+import ch.langenegger.blog.control.BlogRepository;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;

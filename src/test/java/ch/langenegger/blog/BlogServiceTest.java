@@ -1,5 +1,7 @@
-package ch.langenegger;
+package ch.langenegger.blog;
 
+import ch.langenegger.blog.boundary.BlogService;
+import ch.langenegger.blog.entity.Blog;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;

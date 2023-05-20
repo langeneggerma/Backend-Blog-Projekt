@@ -1,4 +1,4 @@
-package ch.langenegger;
+package ch.langenegger.blog.entity;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;

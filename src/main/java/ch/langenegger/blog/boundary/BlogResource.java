@@ -1,4 +1,4 @@
-package ch.langenegger;
+package ch.langenegger.blog.boundary;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

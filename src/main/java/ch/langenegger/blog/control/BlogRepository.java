@@ -1,5 +1,6 @@
-package ch.langenegger;
+package ch.langenegger.blog.control;
 
+import ch.langenegger.blog.entity.Blog;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 
