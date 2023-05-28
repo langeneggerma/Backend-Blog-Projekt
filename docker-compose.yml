@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  app-db:
+    image: mysql:8.0.19
+    container_name: backend-blog-db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: blog
+      MYSQL_USER: quarkus
+      MYSQL_PASSWORD: quarkus
+    healthcheck:
+        test: [ "CMD-SHELL", "mysqladmin ping -uquarkus -pquarkus" ]
+        interval: 1s
+        timeout: 5s
+        retries: 10
+    volumes:
+        - ./db/:/docker-entrypoint-initdb.d
+        - data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+volumes:
+    data:

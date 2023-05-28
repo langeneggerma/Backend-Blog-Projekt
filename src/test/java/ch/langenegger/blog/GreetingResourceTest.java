@@ -1,4 +1,4 @@
-package ch.langenegger;
+package ch.langenegger.blog;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
