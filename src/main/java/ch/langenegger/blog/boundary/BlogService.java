@@ -1,7 +1,8 @@
 package ch.langenegger.blog.boundary;
 
-import ch.langenegger.blog.entity.Blog;
+import ch.langenegger.author.control.AuthorRepository;
 import ch.langenegger.blog.control.BlogRepository;
+import ch.langenegger.blog.entity.Blog;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -13,6 +14,9 @@ import java.util.List;
 public class BlogService {
     @Inject
     BlogRepository blogRepository;
+
+    @Inject
+    AuthorRepository authorRepository;
 
     @Inject
     Logger logger;
