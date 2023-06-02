@@ -1,8 +1,8 @@
 package ch.langenegger;
 
-import ch.langenegger.author.boundary.AuthorService;
-import ch.langenegger.author.entity.Author;
-import ch.langenegger.blog.boundary.BlogService;
+import ch.langenegger.blog.author.control.AuthorService;
+import ch.langenegger.blog.author.entity.Author;
+import ch.langenegger.blog.control.BlogService;
 import ch.langenegger.blog.entity.Blog;
 import io.quarkus.runtime.StartupEvent;
 import jakarta.enterprise.context.ApplicationScoped;
