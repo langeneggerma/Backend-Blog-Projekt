@@ -1,29 +1,22 @@
 package ch.langenegger.blog.entity;
 
-import ch.langenegger.blog.author.entity.Author;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Builder
 @Data
 @Entity
-@Builder
-public class Blog {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor()
+@EqualsAndHashCode(callSuper = true)
+public class Blog  extends BaseEntity{
     public String title;
     private String content;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
-
-    public Blog(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 }
