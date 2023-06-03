@@ -1,7 +1,5 @@
-package ch.langenegger.blog.boundary;
+package ch.langenegger.blog.control;
 
-import ch.langenegger.author.control.AuthorRepository;
-import ch.langenegger.blog.control.BlogRepository;
 import ch.langenegger.blog.entity.Blog;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
@@ -16,9 +14,6 @@ public class BlogService {
     BlogRepository blogRepository;
 
     @Inject
-    AuthorRepository authorRepository;
-
-    @Inject
     Logger logger;
 
     public List<Blog> getBlogs() {
@@ -26,9 +21,27 @@ public class BlogService {
         logger.info("Returning " + blogs.size() + " blogs");
         return blogs;
     }
+
+    public Blog getBlog(Long id) {
+        logger.info("Getting blog " + id);
+        return blogRepository.findById(id);
+    }
+
     @Transactional
     public void addBlog(Blog blog) {
         logger.info("Adding blog " + blog.getTitle());
         blogRepository.persist(blog);
     }
+
+    @Transactional
+    public void deleteBlog(Blog blog) {
+        logger.info("Deleting blog " + blog.getTitle());
+        blogRepository.delete(blog);
+    }
+
+    public long count(){
+        logger.info("Counting blogs");
+        return blogRepository.count();
+    }
+
 }

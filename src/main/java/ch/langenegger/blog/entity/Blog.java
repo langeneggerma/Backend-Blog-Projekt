@@ -1,30 +1,22 @@
 package ch.langenegger.blog.entity;
 
-import ch.langenegger.author.entity.Author;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Builder
+@Data
 @Entity
-public class Blog extends PanacheEntity {
+@NoArgsConstructor
+@AllArgsConstructor()
+@EqualsAndHashCode(callSuper = true)
+public class Blog  extends BaseEntity{
     public String title;
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "ID")
+    @JoinColumn(name = "author_id")
     private Author author;
-
-    public Blog(String title, String content) {
-        this.title = title;
-        this.content = content;
-    }
 }
