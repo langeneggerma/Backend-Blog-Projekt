@@ -4,12 +4,10 @@ import jakarta.persistence.Entity;
 import lombok.*;
 
 
-@Builder
 @Data
-@Entity
 @NoArgsConstructor
-@AllArgsConstructor()
-@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@Entity
 public class Author extends BaseEntity{
     private String firstname;
     private String lastname;

@@ -1,6 +1,24 @@
 # backend-blog-projekt
 
 
+### API Endpoints
+This service exposes several API endpoints, to get an overview use the included OpenAPI specification file at [http://localhost:8080/q/dev-ui/io.quarkus.quarkus-smallrye-openapi/swagger-ui](http://localhost:8080/q/dev-ui/io.quarkus.quarkus-smallrye-openapi/swagger-ui) 
+You can also explore the API interactively using the included Swagger UI at http://localhost:8080/q/dev-ui/io.quarkus.quarkus-smallrye-openapi/swagger-ui
+The following endpoints are available:
+
+| Method | Endpoint | Description |
+| ------ | ------- | ----------- |
+| GET    | /author| Get all authors |
+| GET    | /author/{id} | Get author by id |
+| POST   | /author | Create new author |
+| DELETE | /author/{id} | Delete author by id |
+| GET    | /blog | Get all blogposts |
+| GET    | /blog/{id} | Get blogpost by id |
+| POST   | /blog | Create new blogpost |
+| DELETE | /blog/{id} | Delete blogpost by id |
+| GET| /blog/count | Get number of blogposts |
+
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
