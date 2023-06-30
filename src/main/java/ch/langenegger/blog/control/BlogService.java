@@ -4,9 +4,13 @@ import ch.langenegger.blog.entity.Blog;
 import jakarta.enterprise.context.Dependent;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.core.Context;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.UriInfo;
 import org.jboss.logging.Logger;
 
 import java.util.List;
+import java.util.Optional;
 
 @Dependent
 public class BlogService {
@@ -22,9 +26,15 @@ public class BlogService {
         return blogs;
     }
 
-    public Blog getBlog(Long id) {
+    public List<Blog> findBlogs(String searchString) {
+        var blogs = blogRepository.find("title like ?1 or content like ?1", "%" + searchString + "%");
+        logger.info("Returning " + blogs.count() + " blogs");
+        return blogs.list();
+    }
+
+    public Optional<Blog> getBlog(Long id) {
         logger.info("Getting blog " + id);
-        return blogRepository.findById(id);
+        return blogRepository.findByIdOptional(id);
     }
 
     @Transactional
@@ -44,4 +54,8 @@ public class BlogService {
         return blogRepository.count();
     }
 
+    @Transactional
+    public void updateBlog(Blog blogToUpdate) {
+        blogRepository.persist(blogToUpdate);
+    }
 }
